@@ -51,6 +51,7 @@ var myFunc = function(fileName, optionalArgument){
         }
     }
 
+    //insert header at beginning of array
     rows.unshift(header);
     return  createCsv(rows);
 }
@@ -71,7 +72,7 @@ var loadFileToObject = function(fileName){
     return json;
 }
 
-var createCsvRow = function(...list){
+var createCsvRow = function(list){
     return list.join(',');
 }
 
