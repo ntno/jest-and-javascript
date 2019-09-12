@@ -51,22 +51,29 @@ var myFunc = function(fileName, optionalArgument){
         });
       });
 
-    if(optionalArgument){
-        if(optionalArgument.hasOwnProperty('reverse') && optionalArgument['reverse']){
-            rows.reverse();
-        }
-        if(optionalArgument.hasOwnProperty('caps') && optionalArgument['caps']){
-            let capitalizedRows = [];
-            rows.forEach(function(row){
-                capitalizedRows.push(capitalizeItems(row));
-            });
-            rows = capitalizedRows;
-        }
+    if(hasReverseFlag(optionalArgument)){
+        rows.reverse();
     }
 
+    if(hasCapitalizeFlag(optionalArgument)){
+        let capitalizedRows = [];
+        rows.forEach(function(row){
+            capitalizedRows.push(capitalizeItems(row));
+        });
+        rows = capitalizedRows;
+    }
+    
     //insert header at beginning of array
     rows.unshift(header);
     return  createCsv(rows);
+}
+
+var hasReverseFlag = function(options){
+    return options && options.hasOwnProperty('reverse') && options['reverse'];
+}
+
+var hasCapitalizeFlag = function(options){
+    return options && options.hasOwnProperty('caps') && options['caps'];
 }
 
 var capitalizeItems = function(list){
