@@ -8,7 +8,7 @@ var myFunc = function(fileName, optionalArgument){
 
     
     //for each bill in the list
-    let bills = json['bills_of_lading'];
+    let bills = json.bills_of_lading;
     bills.forEach(function(bill){
         if(bill.bol_number == null){
             throw new Error('missing bol_number')
