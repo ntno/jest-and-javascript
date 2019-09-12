@@ -9,10 +9,11 @@ const jsonKeyToCsvColumn = {
 
 var myFunc = function(fileName, optionalArgument){
     let json = loadFileToObject(fileName);
+    let header = Object.values(jsonKeyToCsvColumn);
+    let rows = [];
+
     let bills = json['bills_of_lading'];
 
-    let rows = [];
-    rows.push(Object.values(jsonKeyToCsvColumn));
     bills.forEach(function(bill){
         let row = [];
         row.push(bill.bol_number);
@@ -34,6 +35,14 @@ var myFunc = function(fileName, optionalArgument){
 
         });
       });
+
+    if(optionalArgument){
+        if(optionalArgument.hasOwnProperty('reverse') && optionalArgument['reverse']){
+            rows.reverse();
+        }
+    }
+
+    rows.unshift(header);
     return  createCsv(rows);
 }
 
