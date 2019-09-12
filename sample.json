@@ -1,0 +1,36 @@
+{
+  "bills_of_lading": [
+    {
+      "bol_number": "bill1",
+      "invoices": [
+        {
+          "invoice_number": "inv1",
+          "items": [
+            {
+              "qty": 1,
+              "itmno": "item1"
+            },
+            {
+              "qty": 2,
+              "itmno": "item2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bol_number": "bill2",
+      "invoices": [
+        {
+          "invoice_number": "inv2",
+          "items": [
+            {
+              "qty": 3,
+              "itmno": "item3"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

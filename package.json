@@ -1,0 +1,19 @@
+{
+  "name": "programming_sample",
+  "version": "1.0.0",
+  "main": "core.js",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^24.8.1"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "modulePaths": [
+      "<rootDir>/"
+    ],
+    "clearMocks": true
+  },
+  "scripts": {
+    "test": "jest --watchAll"
+  }
+}
