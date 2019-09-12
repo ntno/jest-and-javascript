@@ -21,7 +21,7 @@ bill1,inv1,item1,1
 `)
   })
 
-  xit('should do caps', async () => {
+  it('should do caps', async () => {
     const output = await myFunc(fileName, { caps: true })
     expect(output).toEqual(`BillOfLading,Invoice,ItemNumber,Quantity
 BILL1,INV1,ITEM1,1

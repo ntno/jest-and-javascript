@@ -40,10 +40,28 @@ var myFunc = function(fileName, optionalArgument){
         if(optionalArgument.hasOwnProperty('reverse') && optionalArgument['reverse']){
             rows.reverse();
         }
+        if(optionalArgument.hasOwnProperty('caps') && optionalArgument['caps']){
+            let capitalizedRows = [];
+            rows.forEach(function(row){
+                capitalizedRows.push(capitalizeItems(row));
+            });
+            rows = capitalizedRows;
+        }
     }
 
     rows.unshift(header);
     return  createCsv(rows);
+}
+
+var capitalizeItems = function(list){
+    let capitalized = [];
+    list.forEach(function(item){
+        if(typeof item == "string"){
+            item = item.toUpperCase();
+        }
+        capitalized.push(item);
+    });
+    return capitalized;
 }
 
 var loadFileToObject = function(fileName){
