@@ -1,4 +1,4 @@
-# Programming Challenge
+# jest-and-javascript
 
 Your goal is write code in core.js that will transform a sample json file into a csv such that it passes the unit tests in `core.test.js`.
 
