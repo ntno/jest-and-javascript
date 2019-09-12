@@ -30,6 +30,15 @@ BILL2,INV2,ITEM3,3
 `)
   })
 
+  it('should do reversed caps', async () => {
+    const output = await myFunc(fileName, { caps: true , reverse: true})
+    expect(output).toEqual(`BillOfLading,Invoice,ItemNumber,Quantity
+BILL2,INV2,ITEM3,3
+BILL1,INV1,ITEM2,2
+BILL1,INV1,ITEM1,1
+`)
+  })
+
   xit('should fail on no bill of lading number', async () => {
     expect.hasAssertions()
     try {
