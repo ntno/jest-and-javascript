@@ -78,9 +78,9 @@ var createCsvRow = function(list){
 
 var createCsv = function(twoDimensionalList){
     let csvAsString = '';
-    for(let i = 0; i < twoDimensionalList.length; i++) {
-        csvAsString = csvAsString.concat(createCsvRow(twoDimensionalList[i]), '\n');
-    }
+    twoDimensionalList.forEach(function(list){
+        csvAsString = csvAsString.concat(createCsvRow(list), '\n');
+    });
     return csvAsString;
 }
 
