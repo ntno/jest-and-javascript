@@ -1,12 +1,6 @@
 'use strict';
 
-const jsonKeyToCsvColumn = {
-    'bol_number' : 'BillOfLading',
-    'invoice_number' : 'Invoice',
-    'itmno' : 'ItemNumber',
-    'qty' : 'Quantity'
-}
-const header = Object.values(jsonKeyToCsvColumn);
+const header = ['BillOfLading', 'Invoice', 'ItemNumber', 'Quantity'];
 
 var myFunc = function(fileName, optionalArgument){
     let json = loadFileToObject(fileName);
