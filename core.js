@@ -7,7 +7,7 @@ var myFunc = function(fileName, optionalArgument){
     let rows = [];
 
     
-    //for each bill in the list
+    //for each bill of lading in the payload
     let bills = json.bills_of_lading;
     bills.forEach(function(bill){
         if(bill.bol_number == null){
@@ -17,11 +17,10 @@ var myFunc = function(fileName, optionalArgument){
         let row = [];
         row.push(bill.bol_number);
 
-        //for each invoice in the bill
+        //for each invoice in the bill of lading
         let invoices = bill.invoices;
         invoices.forEach(function(invoice){
-            //if not the first invoice in the list
-            //strip out the details for the previous invoice 
+            //if necessary, strip out the details for the previous invoice 
             //(ie everything after the bill of lading number)
             if(row.length > 1){
                 row = row.slice(0, 1);
@@ -31,8 +30,7 @@ var myFunc = function(fileName, optionalArgument){
             //for each item in the invoice
             let items = invoice.items;
             items.forEach(function(item){
-                //if not the first item in the invoice
-                //strip out the details for the previous items 
+                //if necessary, strip out the details for the previous item 
                 //(ie everything after the invoice number)
                 if(row.length > 2){
                     row = row.slice(0, 2);
@@ -41,7 +39,6 @@ var myFunc = function(fileName, optionalArgument){
                 row.push(item.qty);
                 rows.push(row);
             });
-
         });
       });
 
