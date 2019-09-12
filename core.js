@@ -6,27 +6,40 @@ const jsonKeyToCsvColumn = {
     'itmno' : 'ItemNumber',
     'qty' : 'Quantity'
 }
+const header = Object.values(jsonKeyToCsvColumn);
 
 var myFunc = function(fileName, optionalArgument){
     let json = loadFileToObject(fileName);
-    let header = Object.values(jsonKeyToCsvColumn);
     let rows = [];
 
+    
+    //for each bill in the list
     let bills = json['bills_of_lading'];
     bills.forEach(function(bill){
-        let row = [];
         if(bill.bol_number == null){
             throw new Error('missing bol_number')
         }
+
+        let row = [];
         row.push(bill.bol_number);
+
+        //for each invoice in the bill
         let invoices = bill.invoices;
         invoices.forEach(function(invoice){
+            //if not the first invoice in the list
+            //strip out the details for the previous invoice 
+            //(ie everything after the bill of lading number)
             if(row.length > 1){
                 row = row.slice(0, 1);
             }
             row.push(invoice.invoice_number);
+
+            //for each item in the invoice
             let items = invoice.items;
             items.forEach(function(item){
+                //if not the first item in the invoice
+                //strip out the details for the previous items 
+                //(ie everything after the invoice number)
                 if(row.length > 2){
                     row = row.slice(0, 2);
                 }
