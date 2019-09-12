@@ -13,9 +13,11 @@ var myFunc = function(fileName, optionalArgument){
     let rows = [];
 
     let bills = json['bills_of_lading'];
-
     bills.forEach(function(bill){
         let row = [];
+        if(bill.bol_number == null){
+            throw new Error('missing bol_number')
+        }
         row.push(bill.bol_number);
         let invoices = bill.invoices;
         invoices.forEach(function(invoice){

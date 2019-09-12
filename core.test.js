@@ -39,7 +39,7 @@ BILL1,INV1,ITEM1,1
 `)
   })
 
-  xit('should fail on no bill of lading number', async () => {
+  it('should fail on no bill of lading number', async () => {
     expect.hasAssertions()
     try {
       await myFunc('./bad.json')
